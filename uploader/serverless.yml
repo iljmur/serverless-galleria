@@ -1,0 +1,19 @@
+service: uploader
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: eu-central-1
+  environment:
+      DEST_BUCKET: actiprofs/originals
+  role: arn:aws:iam::170048452532:role/serverless
+
+functions:
+  uploadAvatarImage:
+    handler: handler.uploadAvatarImage
+    events:
+      - http:
+          path: avatar/original
+          method: post
+
