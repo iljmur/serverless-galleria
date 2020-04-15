@@ -18,7 +18,7 @@ exports.uploadAvatarImage = (event, context, lambdaCallback) => {
 
 function postImage(event, context, lambdaCallback) {
   if (event.httpMethod === 'POST') {
-    let key = 'image.jpg'
+    let key = event.requestContext.authorizer.principalId + Date.now().toString()
 
     // Get the body data
     //let encodedImage =JSON.parse(event.body).user_avatar;
@@ -27,7 +27,6 @@ function postImage(event, context, lambdaCallback) {
     put(destBucket, key, body)
       .then(() => {
         const message = 'Saved ' + destBucket + ':' + key;
-        console.log(message);
         done(200, JSON.stringify({ message: message }), 'application/json', lambdaCallback);
       })
       .catch((error) => {

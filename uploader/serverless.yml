@@ -6,7 +6,7 @@ provider:
   stage: prod
   region: eu-central-1
   environment:
-      DEST_BUCKET: actiprofs/originals
+      DEST_BUCKET: actiprofs/uploads
   role: arn:aws:iam::170048452532:role/serverless
 
 functions:
