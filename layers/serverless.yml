@@ -1,0 +1,19 @@
+service: firebase-layer
+
+provider:
+  name: aws
+  stage: prod
+  region: eu-central-1
+
+layers:
+  firebase:
+    path: firebase
+    description: firebase layer
+
+resources:
+  Outputs:
+    FirebaseLayerExport:
+        Value:
+          Ref: FirebaseLambdaLayer
+        Export:
+          Name: FirebaseLambdaLayer

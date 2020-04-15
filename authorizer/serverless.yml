@@ -1,0 +1,15 @@
+service: auth
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: prod
+  region: eu-central-1
+  environment:
+      NODE_PATH: "./:/opt/node_modules"
+
+functions:
+  authorizerFunc:
+    handler: ./handler.authorizerFunc
+    layers:
+      - arn:aws:lambda:eu-central-1:170048452532:layer:firebase:4

@@ -1,9 +1,9 @@
-service: uploader
+service: galeria
 
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
+  stage: prod
   region: eu-central-1
   environment:
       DEST_BUCKET: actiprofs/originals
@@ -11,9 +11,9 @@ provider:
 
 functions:
   uploadAvatarImage:
-    handler: handler.uploadAvatarImage
+    handler: ./handler.uploadAvatarImage
     events:
       - http:
           path: avatar/original
           method: post
-
+          authorizer: arn:aws:lambda:eu-central-1:170048452532:function:auth-prod-authorizerFunc

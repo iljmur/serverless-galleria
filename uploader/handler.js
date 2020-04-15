@@ -1,5 +1,6 @@
 'use strict';
 
+
 const aws = require('aws-sdk');
 const s3 = new aws.S3();
 
@@ -20,6 +21,7 @@ function postImage(event, context, lambdaCallback) {
     let key = 'image.jpg'
 
     // Get the body data
+    //let encodedImage =JSON.parse(event.body).user_avatar;
     let body = Buffer.from(event.body, 'base64');
 
     put(destBucket, key, body)
