@@ -57,5 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+.serverless
+
 # CloudFormation packaged templates
 packaged-template.yml
